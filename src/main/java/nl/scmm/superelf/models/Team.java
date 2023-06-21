@@ -1,27 +1,42 @@
 package nl.scmm.superelf.models;
 
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
 @Table(name = "team")
 public class Team {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer teamId;
+    @OneToOne
+    @JoinColumn(name = "competition_competition_id")
     private Competition competition;
+    @OneToOne
+    @JoinColumn(name = "user_user_id")
     private User user;
+    @OneToOne
+    @JoinColumn(name = "formation_formation_id")
+    private Formation formation;
     private Integer points;
+    private List<Player> players;
 
     public Team() {
     }
 
-    public Team(Integer teamId, Competition competition, User user, Integer points) {
+    public Team(Integer teamId, Competition competition, User user, Formation formation, Integer points) {
         this.teamId = teamId;
         this.competition = competition;
         this.user = user;
+        this.formation = formation;
         this.points = points;
     }
 
-    public Team(Competition competition, User user, Integer points) {
+    public Team(Competition competition, User user, Formation formation, Integer points) {
         this.competition = competition;
         this.user = user;
+        this.formation = formation;
         this.points = points;
     }
 
@@ -57,13 +72,23 @@ public class Team {
         this.points = points;
     }
 
+    public Formation getFormation() {
+        return formation;
+    }
+
+    public void setFormation(Formation formation) {
+        this.formation = formation;
+    }
+
     @Override
     public String toString() {
         return "Team{" +
                 "teamId=" + teamId +
                 ", competition=" + competition +
                 ", user=" + user +
+                ", formation=" + formation +
                 ", points=" + points +
+                ", players=" + players +
                 '}';
     }
 }

@@ -1,12 +1,17 @@
 package nl.scmm.superelf.models;
 
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+@Entity
 @Table(name = "player")
 public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer playerId;
     private String playerName;
     private Position position;
+    @OneToOne
+    @JoinColumn(name = "club_club_id")
     private Club club;
 
     public Player() {
