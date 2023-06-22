@@ -9,8 +9,8 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer clubId;
     private String clubName;
-    @OneToOne
-    @JoinColumn(name = "competition_competition_id")
+    @ManyToOne
+    @JoinColumn(name = "competitionId")
     private Competition competition;
 
     public Club() {

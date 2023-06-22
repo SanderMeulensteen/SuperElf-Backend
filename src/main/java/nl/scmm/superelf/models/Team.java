@@ -10,17 +10,16 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer teamId;
-    @OneToOne
-    @JoinColumn(name = "competition_competition_id")
+    @ManyToOne
+    @JoinColumn(name = "competitionId")
     private Competition competition;
-    @OneToOne
-    @JoinColumn(name = "user_user_id")
+    @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
-    @OneToOne
-    @JoinColumn(name = "formation_formation_id")
+    @ManyToOne
+    @JoinColumn(name = "formationId")
     private Formation formation;
     private Integer points;
-    private List<Player> players;
 
     public Team() {
     }
@@ -88,7 +87,6 @@ public class Team {
                 ", user=" + user +
                 ", formation=" + formation +
                 ", points=" + points +
-                ", players=" + players +
                 '}';
     }
 }

@@ -8,8 +8,8 @@ public class Poule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer pouleId;
-    @OneToOne
-    @JoinColumn(name = "competition_competition_id")
+    @ManyToOne
+    @JoinColumn(name = "competitionId")
     private Competition competition;
     private String pouleName;
 

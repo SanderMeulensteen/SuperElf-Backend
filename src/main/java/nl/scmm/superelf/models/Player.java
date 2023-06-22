@@ -9,9 +9,10 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer playerId;
     private String playerName;
+    @Enumerated(value = EnumType.STRING)
     private Position position;
-    @OneToOne
-    @JoinColumn(name = "club_club_id")
+    @ManyToOne
+    @JoinColumn(name = "clubId")
     private Club club;
 
     public Player() {
