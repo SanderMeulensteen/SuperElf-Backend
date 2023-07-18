@@ -12,19 +12,22 @@ public class Club {
     @ManyToOne
     @JoinColumn(name = "competitionId")
     private Competition competition;
+    private String logo;
 
     public Club() {
     }
 
-    public Club(Integer clubId, String clubName, Competition competition) {
+    public Club(Integer clubId, String clubName, Competition competition, String logo) {
         this.clubId = clubId;
         this.clubName = clubName;
         this.competition = competition;
+        this.logo = logo;
     }
 
-    public Club(String clubName, Competition competition) {
+    public Club(String clubName, Competition competition, String logo) {
         this.clubName = clubName;
         this.competition = competition;
+        this.logo = logo;
     }
 
     public Integer getClubId() {
@@ -51,12 +54,21 @@ public class Club {
         this.competition = competition;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     @Override
     public String toString() {
         return "Club{" +
                 "clubId=" + clubId +
                 ", clubName='" + clubName + '\'' +
                 ", competition=" + competition +
+                ", logo=" + logo +
                 '}';
     }
 }

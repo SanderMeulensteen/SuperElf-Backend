@@ -14,21 +14,24 @@ public class Player {
     @ManyToOne
     @JoinColumn(name = "clubId")
     private Club club;
+    private Integer price;
 
     public Player() {
     }
 
-    public Player(Integer playerId, String playerName, Position position, Club club) {
+    public Player(Integer playerId, String playerName, Position position, Club club, Integer price) {
         this.playerId = playerId;
         this.playerName = playerName;
         this.position = position;
         this.club = club;
+        this.price = price;
     }
 
-    public Player(String playerName, Position position, Club club) {
+    public Player(String playerName, Position position, Club club, Integer price) {
         this.playerName = playerName;
         this.position = position;
         this.club = club;
+        this.price = price;
     }
 
     public Integer getPlayerId() {
@@ -63,6 +66,14 @@ public class Player {
         this.club = club;
     }
 
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -70,6 +81,7 @@ public class Player {
                 ", playerName='" + playerName + '\'' +
                 ", position=" + position +
                 ", club=" + club +
+                ", price=" + price +
                 '}';
     }
 }
